@@ -5,6 +5,7 @@ Teste PITANG
 
 Historia_1 - Criacao de Branch
 Historia_2 - Commit do projeto Spring Base Criado com JPA e WebService Base H2
+Historia_3 - Commit com a primeira model e controller do ususario prontos.
 
 # Getting Started
 
