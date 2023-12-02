@@ -14,6 +14,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.Transient;
 
 @Entity
 public class Usuario {
@@ -46,6 +47,7 @@ public class Usuario {
 
 	@Column
 	@OneToMany
+	@Transient
 	private List<Carro> Cars;
 	
 	public Long getId() {

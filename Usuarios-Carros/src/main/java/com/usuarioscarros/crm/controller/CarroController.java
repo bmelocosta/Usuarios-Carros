@@ -1,6 +1,5 @@
 package com.usuarioscarros.crm.controller;
 
-import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,35 +12,24 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.usuarioscarros.crm.model.Carro;
-import com.usuarioscarros.crm.model.Usuario;
 import com.usuarioscarros.crm.repository.CarroRepository;
-import com.usuarioscarros.crm.repository.UsuarioRepository;
 
 @RestController
-@RequestMapping("/users")
-public class UsuarioController {
+@RequestMapping("/cars")
+public class CarroController {
 
 	@Autowired
-	private UsuarioRepository usuarioRepository;
-	
-	@Autowired
-	CarroRepository carroRepository;
+	private CarroRepository carroRepository;
 	
 	@GetMapping
-	public List<Usuario> listar() {
-		return usuarioRepository.findAll();
+	public List<Carro> listar() {
+		return carroRepository.findAll();
 	}
 	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public Usuario adicionarUsuario(@RequestBody Usuario user) {
-		if (user.getCars()!=null && user.getCars().size()>0) {			
-			for (Iterator<Carro> iterator = user.getCars().iterator(); iterator.hasNext();) {
-				Carro carro = (Carro) iterator.next();
-				carroRepository.save(carro);				
-			}			
-		}
-		return usuarioRepository.save(user);
+	public Carro adicionarCarro(@RequestBody Carro carro) {
+		return carroRepository.save(carro);
 	}
 	
 }
