@@ -7,6 +7,7 @@ Historia_1 - Criacao de Branch
 Historia_2 - Commit do projeto Spring Base Criado com JPA e WebService Base H2
 Historia_3 - Commit com a primeira model e controller da classe Usuario
 Historia_4 - Model e Controller completo da classe Carro
+Historia_5 - Criando Spring Configuration para Solicitar o token de acesso JWT
 
 # Getting Started
 
