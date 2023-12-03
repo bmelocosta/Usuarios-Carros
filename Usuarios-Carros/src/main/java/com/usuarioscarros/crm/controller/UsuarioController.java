@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -34,14 +36,18 @@ public class UsuarioController {
 	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public Usuario adicionarUsuario(@RequestBody Usuario user) {
+	public ResponseEntity adicionarUsuario(@RequestBody Usuario user) {
 		if (user.getCars()!=null && user.getCars().size()>0) {			
 			for (Iterator<Carro> iterator = user.getCars().iterator(); iterator.hasNext();) {
 				Carro carro = (Carro) iterator.next();
 				carroRepository.save(carro);				
 			}			
 		}
-		return usuarioRepository.save(user);
+
+		String encryptedPassword = new BCryptPasswordEncoder().encode(user.getPassword());
+		user.setPassword(encryptedPassword);
+		usuarioRepository.save(user);
+		return ResponseEntity.ok().build(); 
 	}
 	
 }

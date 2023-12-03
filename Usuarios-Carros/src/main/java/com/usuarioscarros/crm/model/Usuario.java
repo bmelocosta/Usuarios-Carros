@@ -2,6 +2,7 @@ package com.usuarioscarros.crm.model;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
@@ -9,7 +10,6 @@ import java.util.Objects;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import jakarta.persistence.Column;
@@ -18,7 +18,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.Transient;
 
 @Entity
 public class Usuario implements UserDetails{
@@ -50,8 +49,7 @@ public class Usuario implements UserDetails{
 	private String phone;
 
 	@Column
-	@OneToMany
-	@Transient
+	@OneToMany	
 	private List<Carro> Cars;
 	
 	public Long getId() {
@@ -156,13 +154,13 @@ public class Usuario implements UserDetails{
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		// TODO Auto-generated method stub
-		return List.of(new SimpleGrantedAuthority("ROLE_USER"));
+		return new ArrayList();
 	}
 
 	@Override
 	public String getUsername() {
 		// TODO Auto-generated method stub
-		return this.login;
+		return login;
 	}
 
 	@Override

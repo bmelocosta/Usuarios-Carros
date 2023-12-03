@@ -11,20 +11,27 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.usuarioscarros.crm.model.AuthenticationDTO;
+import com.usuarioscarros.crm.model.LoginResponseDTO;
+import com.usuarioscarros.crm.model.Usuario;
+import com.usuarioscarros.crm.security.TokenService;
 
 @RestController
-@RequestMapping("auth")
+@RequestMapping("/signin")
 public class AuthenticationController {
 
 	@Autowired
 	private AuthenticationManager authenticationManager;
 	
-	@PostMapping("/signin")
+	@Autowired
+	private TokenService tokenService;
+	
+	@PostMapping
 	public ResponseEntity login(@RequestBody @Validated AuthenticationDTO data) {
 		var loginPassword = new UsernamePasswordAuthenticationToken(data.login(), data.password());
-		var auth = this.authenticationManager.authenticate(loginPassword);
+		var auth = this.authenticationManager.authenticate(loginPassword); 		
+		var token = tokenService.generateToken((Usuario)auth.getPrincipal());
 		
-		return ResponseEntity.ok().build();
+		return ResponseEntity.ok(new LoginResponseDTO(token));
 	}
 	
 }
