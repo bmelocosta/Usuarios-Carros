@@ -8,4 +8,7 @@ import com.usuarioscarros.crm.model.Usuario;
 public interface UsuarioRepository extends JpaRepository<Usuario, Long>{
 
 	UserDetails findByLogin(String Login);	
+	UserDetails findByEmail(String email);
+	boolean existsByEmail(String email);
+	boolean existsByLogin(String Login);
 }

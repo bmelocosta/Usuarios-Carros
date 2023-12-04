@@ -1,12 +1,9 @@
 package com.usuarioscarros.crm.model;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
-import java.util.Objects;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.GrantedAuthority;
@@ -18,139 +15,74 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@EqualsAndHashCode(of="id")
 public class Usuario implements UserDetails{
+
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4481128241145472909L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(nullable = false)
+	@Column
+	@NotBlank(message = "Missing fields")
+	@NotNull(message = "Invalid fields")
 	private String firstName;
 	
-	@Column(nullable = false)
+	@Column
+	@NotBlank(message = "Missing fields")
+	@NotNull(message = "Invalid fields")
 	private String lastName;
 	
-	@Column
+	@Column(unique=true)
+	@Email(message = "Invalid fields")
+	@NotBlank(message = "Missing fields")
+	@NotNull(message = "Invalid fields")
 	private String email;
 	
-	@Column
+	@Column	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@NotNull(message = "Invalid fields")
 	private Date birthday;
 	
-	@Column(nullable = false , name = "login")
+	@Column(unique=true)
+	@NotBlank(message = "Missing fields")
+	@NotNull(message = "Invalid fields")
 	private String login;
 	
 	@Column(nullable = false)
+	@NotBlank(message = "Missing fields")
+	@NotNull(message = "Invalid fields")
 	private String password;
 	
 	@Column(nullable = false)
+	@NotBlank(message = "Missing fields")
+	@NotNull(message = "Invalid fields")
 	private String phone;
 
 	@Column
-	@OneToMany	
+	@OneToMany
+	@NotNull(message = "Invalid fields")
 	private List<Carro> Cars;
-	
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public Date getBirthday() {
-		return birthday;
-	}
-
-	public void setBirthday(String birthday) {
-		SimpleDateFormat formatarData = new SimpleDateFormat("yyyy-MM-dd");
-		formatarData.setLenient(false); // assim não aceita datas inválidas
-		Date dataFormatada;
-		try {
-			dataFormatada = formatarData.parse(birthday);
-		} catch (ParseException e) {
-			// Data Invalida
-			dataFormatada=null;
-			e.printStackTrace();
-		}
-		this.birthday = dataFormatada;
-	}
-
-	public String getLogin() {
-		return login;
-	}
-
-	public void setLogin(String login) {
-		this.login = login;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public String getPhone() {
-		return phone;
-	}
-
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
-
-	public List<Carro> getCars() {
-		return Cars;
-	}
-
-	public void setCars(List<Carro> cars) {
-		Cars = cars;
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(id);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Usuario other = (Usuario) obj;
-		return Objects.equals(id, other.id);
-	}
-
+		
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		// TODO Auto-generated method stub
@@ -185,10 +117,6 @@ public class Usuario implements UserDetails{
 	public boolean isEnabled() {
 		// TODO Auto-generated method stub
 		return true;
-	}
-
-	
-
-	
+	}	
 
 }

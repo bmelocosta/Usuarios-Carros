@@ -1,87 +1,54 @@
 package com.usuarioscarros.crm.model;
 
-import java.util.Objects;
+import java.io.Serializable;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
-public class Carro {
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@EqualsAndHashCode(of="id")
+public class Carro implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -232436207897783662L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
 	@Column(nullable = false , name = "ano")
+	@NotNull(message = "Invalid fields")
 	private int year;
 	
-	@Column(nullable = false)
+	@Column(nullable = false,unique=true)
+	@NotBlank(message = "Missing fields")
+	@NotNull(message = "Invalid fields")	
 	private String licensePlate;
 	
 	@Column(nullable = false)
+	@NotBlank(message = "Missing fields")
+	@NotNull(message = "Invalid fields")
 	private String model;
 	
 	@Column(nullable = false)
+	@NotBlank(message = "Missing fields")
+	@NotNull(message = "Invalid fields")
 	private String color;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public int getYear() {
-		return year;
-	}
-
-	public void setYear(int year) {
-		this.year = year;
-	}
-
-	public String getLicensePlate() {
-		return licensePlate;
-	}
-
-	public void setLicensePlate(String licensePlate) {
-		this.licensePlate = licensePlate;
-	}
-
-	public String getModel() {
-		return model;
-	}
-
-	public void setModel(String model) {
-		this.model = model;
-	}
-
-	public String getColor() {
-		return color;
-	}
-
-	public void setColor(String color) {
-		this.color = color;
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(id);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Carro other = (Carro) obj;
-		return Objects.equals(id, other.id);
-	}
 
 }

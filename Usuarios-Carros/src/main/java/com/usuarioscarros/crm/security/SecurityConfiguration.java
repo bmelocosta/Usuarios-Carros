@@ -28,8 +28,15 @@ public class SecurityConfiguration {
 				sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)).
 				authorizeHttpRequests(authorize -> authorize.
 						requestMatchers(HttpMethod.GET, "/cars").authenticated().
+						requestMatchers(HttpMethod.POST, "/cars").authenticated().
+						requestMatchers(HttpMethod.GET, "/cars/**").authenticated().						
+						requestMatchers(HttpMethod.PUT, "/cars/**").authenticated().
+						requestMatchers(HttpMethod.DELETE, "/cars/**").authenticated().						
 						requestMatchers(HttpMethod.GET, "/users").permitAll().
 						requestMatchers(HttpMethod.POST, "/users").permitAll().
+						requestMatchers(HttpMethod.GET, "/users/**").permitAll().
+						requestMatchers(HttpMethod.PUT, "/users/**").permitAll().
+						requestMatchers(HttpMethod.DELETE, "/users/**").permitAll().
 						requestMatchers(HttpMethod.POST, "/signin").permitAll()).
 				addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class).
 				build();

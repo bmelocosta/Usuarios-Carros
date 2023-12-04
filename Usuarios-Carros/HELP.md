@@ -9,6 +9,8 @@ Historia_3 - Commit com a primeira model e controller da classe Usuario
 Historia_4 - Model e Controller completo da classe Carro
 Historia_5 - Criando Spring Configuration para Validar Login e criptografando senha de usuario.
 Historia_6 - Criando e retornando o Token de autorizacao de acesso ok.
+Historia_7 - Criacao de Todas as validacoes  e tratamento de excessoes, Liberaçoes de todos os metodos no Security Configuration 			além da criação de todos os  metodos necessarios nos Devidos controllers e services do backend.
+
 
 # Getting Started
 
