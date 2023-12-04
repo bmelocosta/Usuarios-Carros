@@ -1,7 +1,7 @@
 # Usuarios-Carros
 Teste PITANG
 
-#Historias do usuario:
+#ESTÓRIAS DE USUÁRIO
 
 Historia_1 - Criacao de Branch
 Historia_2 - Commit do projeto Spring Base Criado com JPA e WebService Base H2
