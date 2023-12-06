@@ -5,16 +5,23 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
+import org.hibernate.annotations.CurrentTimestamp;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EntityListeners;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -30,6 +37,10 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(of="id")
+@EnableJpaAuditing
+@SpringBootApplication
+@Table
+@EntityListeners(AuditingEntityListener.class)
 public class Usuario implements UserDetails{
 
 	
@@ -82,6 +93,13 @@ public class Usuario implements UserDetails{
 	@OneToMany
 	@NotNull(message = "Invalid fields")
 	private List<Carro> Cars;
+	
+	@CreatedDate
+	@Column	
+	private Date createdAt;
+
+	@Column	
+	private Date lastLogin;
 		
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {

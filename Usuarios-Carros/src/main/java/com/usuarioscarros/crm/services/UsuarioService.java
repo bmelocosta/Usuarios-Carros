@@ -1,10 +1,12 @@
 package com.usuarioscarros.crm.services;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -53,7 +55,8 @@ public class UsuarioService {
 		
 	}
 	public Usuario update(Long id , @Valid Usuario user) throws Exception {
-		if (usuarioRepository.findById(id).isEmpty()) {
+		Optional<Usuario> usuarioConsultado = usuarioRepository.findById(id);
+		if (usuarioConsultado.isEmpty()) {
 			throw new RuntimeException("Usuario com id: "+id+" não foi encontrado.");
 		}
 		if (user.getCars()!=null && user.getCars().size()>0) {			
@@ -66,14 +69,15 @@ public class UsuarioService {
 				}
 			}			
 		}
-		
+				
 		String encryptedPassword = new BCryptPasswordEncoder().encode(user.getPassword());
 		user.setPassword(encryptedPassword);
 		user.setId(id);
-		if (usuarioRepository.existsByEmail(user.getEmail())){
+		
+		if (usuarioRepository.existsByEmail(user.getEmail()) && !usuarioConsultado.get().getEmail().equals(user.getEmail())){
 			throw new RuntimeException("Email already exists");
 		}
-		if (usuarioRepository.existsByLogin(user.getLogin())){
+		if (usuarioRepository.existsByLogin(user.getLogin()) && !usuarioConsultado.get().getLogin().equals(user.getLogin())){
 			throw new RuntimeException("Login already exists");
 		}
 		return usuarioRepository.save(user);
@@ -89,6 +93,49 @@ public class UsuarioService {
 	
 	public Optional<Usuario> getUsuario(Long id) {
 		return usuarioRepository.findById(id);
+	}
+	
+	public UserDetails getUsuario(String login) {
+		return usuarioRepository.findByLogin(login);
+	}
+
+	public Usuario updateCarros(Usuario usuarioLogado, @Valid Carro carro) throws Exception{
+				
+		carro.setId(null);
+		List<Carro> lista = usuarioLogado.getCars();
+		if (lista==null) {
+			lista = new ArrayList<Carro>();
+			lista.add(carro);
+		}else {
+			lista.add(carro);
+		}
+		usuarioLogado.setCars(lista);
+		carroService.save(carro);
+		
+		return usuarioRepository.save(usuarioLogado);
+		
+	}
+	
+	public Usuario deleteCarro(Usuario user, Carro carro) throws Exception{		
+		
+		List<Carro> lista = user.getCars();
+		if (lista!=null && lista.contains(carro)) {			
+			lista.remove(carro);
+		}else {
+			throw new RuntimeException("Invalid Fields");
+		}
+		user.setCars(lista);
+		String encryptedPassword = new BCryptPasswordEncoder().encode(user.getPassword());
+		user.setPassword(encryptedPassword);	
+		
+		if (usuarioRepository.existsByEmail(user.getEmail()) && !user.getEmail().equals(user.getEmail())){
+			throw new RuntimeException("Email already exists");
+		}
+		if (usuarioRepository.existsByLogin(user.getLogin()) && !user.getLogin().equals(user.getLogin())){
+			throw new RuntimeException("Login already exists");
+		}
+		return usuarioRepository.save(user);
+		
 	}
 	
 }

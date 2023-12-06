@@ -1,5 +1,7 @@
 package com.usuarioscarros.crm.dto;
 
-public record LoginResponseDTO(String token) {
+import com.usuarioscarros.crm.model.Usuario;
+
+public record LoginResponseDTO(String token , Usuario usuario) {
 
 }

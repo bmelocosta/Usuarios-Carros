@@ -22,7 +22,7 @@ import com.usuarioscarros.crm.services.UsuarioService;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/api/users")
 public class UsuarioController {
 
 	@Autowired

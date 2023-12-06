@@ -10,6 +10,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
+import com.auth0.jwt.exceptions.TokenExpiredException;
+import com.usuarioscarros.crm.exceptions.ApiRequestException;
 import com.usuarioscarros.crm.repository.UsuarioRepository;
 
 import jakarta.servlet.FilterChain;
@@ -31,10 +33,14 @@ public class SecurityFilter extends OncePerRequestFilter{
 			throws ServletException, IOException {
 		var token = this.recoverToken(request);
 		if (token != null) {
-			var login = tokenService.validateToken(token);
-			UserDetails usuario = usuarioRepository.findByLogin(login);
-			var authentication = new UsernamePasswordAuthenticationToken(usuario, null, usuario.getAuthorities());
-			SecurityContextHolder.getContext().setAuthentication(authentication);
+			try {
+				var login = tokenService.validateToken(token);
+				UserDetails usuario = usuarioRepository.findByLogin(login);
+				var authentication = new UsernamePasswordAuthenticationToken(usuario, null, usuario.getAuthorities());
+				SecurityContextHolder.getContext().setAuthentication(authentication);				
+			} catch (TokenExpiredException e) {
+				throw new ApiRequestException("Unauthorized - invalid session");
+			}
 		}
 		filterChain.doFilter(request, response);
 	}
