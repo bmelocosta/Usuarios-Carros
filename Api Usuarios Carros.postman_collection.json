@@ -1,0 +1,248 @@
+{
+	"info": {
+		"_postman_id": "6d16b77e-f009-465d-af50-7b6221adb18c",
+		"name": "Api Usuarios Carros",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "18879926"
+	},
+	"item": [
+		{
+			"name": "localhost:8080/users",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "jwt",
+					"jwt": {
+						"secret": "",
+						"algorithm": "HS256",
+						"isSecretBase64Encoded": false,
+						"payload": "{}",
+						"addTokenTo": "header",
+						"headerPrefix": "Bearer",
+						"queryParamKey": "token",
+						"header": "{}"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "34.212.244.100:8080/api/users"
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/users",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"firstName\": \"Jose\",\r\n\"lastName\": \"Silva\",\r\n\"email\": \"Jose@silva.com\",\r\n\"birthday\": \"1990-05-01\",\r\n\"login\": \"jose.silva\",\r\n\"password\": \"h3ll0\",\r\n\"phone\": \"988888888\",\r\n\"cars\": [\r\n{\r\n\"year\": 2018,\r\n\"licensePlate\": \"PDV-5467\",\r\n\"model\": \"fuscao\",\r\n\"color\": \"preto\"\r\n}\r\n]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "34.212.244.100:8080/api/users"
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/cars",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJVc3Vhcmlvcy1DYXJyb3MiLCJzdWIiOiJieWUud29ybGQiLCJleHAiOjE3MDE4MzI0Njl9.M_kXlZtOZNtCSUGn1gn-cBOqS0YG6Q8aVYqGt91bniM"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "34.212.244.100:8080/api/cars/3"
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/cars",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJVc3Vhcmlvcy1DYXJyb3MiLCJzdWIiOiJieWUud29ybGQiLCJleHAiOjE3MDE4MzI0Njl9.M_kXlZtOZNtCSUGn1gn-cBOqS0YG6Q8aVYqGt91bniM"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"year\": 2019,\r\n\"licensePlate\": \"PDV-0612\",\r\n\"model\": \"Audi\",\r\n\"color\": \"purple\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "34.212.244.100:8080/api/cars"
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/signin",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"login\": \"bye.world\",\r\n    \"password\": \"h3ll0\" \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "34.212.244.100:8080/api/signin"
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/users",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "2",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "34.212.244.100:8080/api/users/2"
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/users",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"firstName\": \"Hello\",\r\n\"lastName\": \"World\",\r\n\"email\": \"hello@world.com\",\r\n\"birthday\": \"1990-05-02\",\r\n\"login\": \"hello.world\",\r\n\"password\": \"h3ll0\",\r\n\"phone\": \"988888888\",\r\n\"cars\": [\r\n{\r\n \"id\":1 ,\r\n\"year\": 2018,\r\n\"licensePlate\": \"PDV-0627\",\r\n\"model\": \"Audi\",\r\n\"color\": \"gray\"\r\n}\r\n]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "34.212.244.100:8080/api/users/1"
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/me",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJVc3Vhcmlvcy1DYXJyb3MiLCJzdWIiOiJieWUud29ybGQiLCJleHAiOjE3MDE4MzI0Njl9.M_kXlZtOZNtCSUGn1gn-cBOqS0YG6Q8aVYqGt91bniM"
+					}
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "34.212.244.100:8080/api/me"
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/api/cars/2",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJVc3Vhcmlvcy1DYXJyb3MiLCJzdWIiOiJieWUud29ybGQiLCJleHAiOjE3MDE4MzI0Njl9.M_kXlZtOZNtCSUGn1gn-cBOqS0YG6Q8aVYqGt91bniM"
+					}
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 3,\r\n    \"year\": 2019,\r\n    \"licensePlate\": \"PDV-0612\",\r\n    \"model\": \"Audi\",\r\n    \"color\": \"Pink\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "34.212.244.100:8080/api/cars/3"
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/api/cars/2",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJVc3Vhcmlvcy1DYXJyb3MiLCJzdWIiOiJieWUud29ybGQiLCJleHAiOjE3MDE4MzI0Njl9.M_kXlZtOZNtCSUGn1gn-cBOqS0YG6Q8aVYqGt91bniM"
+					}
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "34.212.244.100:8080/api/cars/3"
+			},
+			"response": []
+		}
+	]
+}
