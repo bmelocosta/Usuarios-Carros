@@ -1,0 +1,26 @@
+<h2>Nome: {{usuario.firstName}}</h2>
+<h2>Sobrenome: {{usuario.lastName}}</h2>
+<h2>email: {{usuario.email}}</h2>
+<h2>Nascimento: {{usuario.birthday}}</h2>
+<h2>Login: {{usuario.login}}</h2>
+<h2>Fone: {{usuario.phone}}</h2>
+<br>
+<h2>
+  Lista de Carros:
+</h2>
+<ul>
+  <li *ngFor="let carro of carros">
+    <h2>
+    Ano: {{carro.year}} Placa: {{carro.licensePlate}} Modelo: {{carro.model}} Cor: {{carro.color}}
+    </h2>
+  </li>
+</ul>
+<br>
+<h2>Criação: {{resposta.createdAt}}</h2>
+<h2>Último Login: {{resposta.lastLogin}}</h2>
+<br>
+<button>Gerenciar Dados</button>
+
+
+
+

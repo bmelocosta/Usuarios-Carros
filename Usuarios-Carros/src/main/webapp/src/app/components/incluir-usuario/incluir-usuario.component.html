@@ -1,0 +1,57 @@
+<div class="container">
+	<div class="screen">
+		<div class="screen__content">
+			<form class="login">
+        <h2>Registro de Usuário</h2>
+        <div class="form-group">
+          <label for="firstname">Nome: </label>
+          <input type="text" class="form-cntrol" id="firstname" [(ngModel)]="usuario.firstName" name="firstName">
+        </div>
+        <div class="form-group">
+          <label for="lastname">Sobrenome: </label>
+          <input type="text" class="form-cntrol" id="lastname" [(ngModel)]="usuario.lastName" name="lastname">
+        </div>
+        <div class="form-group">
+          <label for="email">Email: </label>
+          <input type="email" class="form-cntrol" id="email" [(ngModel)]="usuario.email" name="email">
+        </div>
+        <div class="form-group">
+          <label for="birthday">Nascimento: </label>
+          <input type="Date" class="form-cntrol" id="birthday" [(ngModel)]="usuario.birthday" name="birthday">
+        </div>
+        <div class="form-group">
+          <label for="login">Login: </label>
+          <input type="text" class="form-cntrol" id="login" [(ngModel)]="usuario.login" name="login">
+        </div>
+        <div class="form-group">
+          <label for="password">Password: </label>
+          <input type="password" class="form-cntrol" id="password" [(ngModel)]="usuario.password" name="pasword">
+        </div>
+        <div class="form-group">
+          <label for="phone">Telefone: </label>
+          <input type="text" class="form-cntrol" id="phone" [(ngModel)]="usuario.phone" name="phone">
+        </div>
+        <br>
+        <div class="form-group">
+          <label>Carros: </label>
+          <button (click)="popupCarros()">incluir</button>
+          <ul>
+            <li ngModel *ngFor="let carro of carros">
+              Ano: {{carro.year}}  Placa: {{carro.licensePlate}}  Modelo: {{carro.model}} Cor: {{carro.color}}
+            </li>
+          </ul>
+        </div>
+        <br>
+        <div class="mt-2">
+          <button type="submit" class="btn btn-primary" (click)="onEnvioFormulario()">Registrar</button>
+        </div>
+      </form>
+		</div>
+		<div class="screen__background">
+			<span class="screen__background__shape screen__background__shape4"></span>
+			<span class="screen__background__shape screen__background__shape3"></span>
+			<span class="screen__background__shape screen__background__shape2"></span>
+			<span class="screen__background__shape screen__background__shape1"></span>
+		</div>
+	</div>
+</div>
