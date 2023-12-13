@@ -12,6 +12,7 @@ Historia_6 - Criando e retornando o Token de autorizacao de acesso ok.
 Historia_7 - Criacao de Todas as validacoes  e tratamento de excessoes, Liberaçoes de todos os metodos no Security Configuration 			além da criação de todos os  metodos necessarios nos Devidos controllers e services do backend.
 Historia_8 - Criacao de todos os metodos nos controladores e Services, testados todos os endpoints.
 Historia_9 - Geracao de Pacote e importaco para maquina virtua da Amazon AWC no endereco 34.212.244.100:8080 com a api já funcional.
+Historia_10 - Elaboracao do front tela inicial, tela /ME e tela de cadastro do usuario concluidas.
 
 #SOLUÇÃO
 
