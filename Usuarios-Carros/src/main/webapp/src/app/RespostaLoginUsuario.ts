@@ -1,6 +1,6 @@
 import { Usuario } from "./Usuario";
 
-export interface RespostaLoginUsuario {
+export class RespostaLoginUsuario {
   token?: string;
   usuario?: Usuario;
 }

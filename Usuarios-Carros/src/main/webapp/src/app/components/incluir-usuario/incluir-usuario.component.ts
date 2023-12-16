@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { CarroPopupComponent } from '../carro-popup/carro-popup.component';
 import { UsuarioService } from '../../services/usuario.service';
 import { Router } from '@angular/router';
+import { DadosCarros } from '../../DadosCarros';
 
 
 @Component({
@@ -20,11 +21,13 @@ export class IncluirUsuarioComponent {
   carros: Carro[] = [];
 
   popupCarros(){
+    const dadosPopup: DadosCarros = {};
+    dadosPopup.carro = new Carro();
+    dadosPopup.carros = this.carros;
     console.log("Abrindo Popup Carros.")
   this.dialog.open(CarroPopupComponent,{
-    data : this.carros
+    data : dadosPopup
   });
-  // this.enviarCarros();
 
   }
 
@@ -40,13 +43,6 @@ export class IncluirUsuarioComponent {
 
   }
 
-  // @Output() eventoCarros = new EventEmitter;
-  // enviarCarros(){
-  //   this.eventoCarros.emit(this.carros);
-  // }
 
-  receberCarros(carros: Carro[]){
-  this.carros = carros;
-  }
 
 }

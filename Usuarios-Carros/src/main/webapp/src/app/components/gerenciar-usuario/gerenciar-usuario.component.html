@@ -2,7 +2,7 @@
 	<div class="screen">
 		<div class="screen__content">
 			<div class="login" name="form">
-        <h2>Registro de Usuário</h2>
+        <h2>Gerencia de Usuário</h2>
         <div class="form-group">
           <label for="firstname">Nome: </label>
           <input type="text" class="form-cntrol" id="firstname" [(ngModel)]="usuario.firstName" name="firstName">
@@ -17,7 +17,7 @@
         </div>
         <div class="form-group">
           <label for="birthday">Nascimento: </label>
-          <input type="Date" class="form-cntrol" id="birthday" [(ngModel)]="usuario.birthday" name="birthday">
+          <input type="text" datetime="yyyy-MM-dd" class="form-cntrol" id="birthday" [(ngModel)]="usuario.birthday" name="birthday">
         </div>
         <div class="form-group">
           <label for="login">Login: </label>
@@ -38,14 +38,16 @@
           <ul>
             <li *ngFor="let carro of carros">
               Ano: {{carro.year}}  Placa: {{carro.licensePlate}}  Modelo: {{carro.model}} Cor: {{carro.color}}
+              <button (click)="editarCarro(carro)">Alterar</button>
+              <button (click)="excluirCarro(carro)">Excluir</button>
             </li>
           </ul>
         </div>
         <br>
         <div class="mt-2">
-          <button type="submit" class="btn btn-primary" (click)="onEnvioFormulario()">Registrar</button>
+          <button type="submit" class="btn btn-primary" (click)="onEnvioFormulario()">Atualizar</button>
         </div>
-      </div>
+    </div>
 		</div>
 		<div class="screen__background">
 			<span class="screen__background__shape screen__background__shape4"></span>

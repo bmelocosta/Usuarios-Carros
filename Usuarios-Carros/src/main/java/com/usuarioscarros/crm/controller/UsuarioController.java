@@ -22,7 +22,7 @@ import com.usuarioscarros.crm.services.UsuarioService;
 
 import jakarta.validation.Valid;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "http://servico-front-pitang.s3-website-us-west-2.amazonaws.com")
 @RestController
 @RequestMapping("/api/users")
 public class UsuarioController {
@@ -34,15 +34,19 @@ public class UsuarioController {
 	CarroService carroService;
 	
 	@GetMapping
+	@CrossOrigin(origins = "http://localhost:4200")
 	public ResponseEntity<List<Usuario>> listar() {
 		return ResponseEntity.ok().body(usuarioService.listar());
 	}
+	
 	@GetMapping("/{id}")
+	@CrossOrigin(origins = "http://servico-front-pitang.s3-website-us-west-2.amazonaws.com")
 	public ResponseEntity<?> getUsuarioPorId(@PathVariable ("id") Long id) {
 		return ResponseEntity.ok().body(usuarioService.getUsuario(id));
 	}
 	
-	@PostMapping	
+	@PostMapping
+	@CrossOrigin(origins = "http://servico-front-pitang.s3-website-us-west-2.amazonaws.com")
 	public ResponseEntity<?> adicionarUsuario(@RequestBody @Valid Usuario user) {	
 		try {
 			usuarioService.save(user);
@@ -52,7 +56,8 @@ public class UsuarioController {
 			return ResponseEntity.ok().body(erro);
 		}
 	}
-	@PutMapping("/{id}")	
+	@PutMapping("/{id}")
+	@CrossOrigin(origins = "http://servico-front-pitang.s3-website-us-west-2.amazonaws.com")
 	public ResponseEntity<?> atualizarUsuario(@PathVariable("id") Long id, @RequestBody @Valid Usuario user) {	
 		try {
 			usuarioService.update(id , user);
@@ -63,6 +68,7 @@ public class UsuarioController {
 		}
 	}
 	@DeleteMapping("/{id}")	
+	@CrossOrigin(origins = "http://servico-front-pitang.s3-website-us-west-2.amazonaws.com")
 	public ResponseEntity<?> deletarUsuario(@PathVariable("id") Long id) {	
 		try {
 			usuarioService.delete(id);

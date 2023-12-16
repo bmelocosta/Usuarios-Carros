@@ -4,10 +4,13 @@ import { PaginaInicialComponent } from './components/pagina-inicial/pagina-inici
 import { UsuarioLogadoComponent } from './components/usuario-logado/usuario-logado.component';
 import { IncluirUsuarioComponent } from './components/incluir-usuario/incluir-usuario.component';
 import { CarroPopupComponent } from './components/carro-popup/carro-popup.component';
+import { GerenciarUsuarioComponent } from './components/gerenciar-usuario/gerenciar-usuario.component';
+
 const routes: Routes = [
   {path: '', component: PaginaInicialComponent},
-  {path: 'register', component: IncluirUsuarioComponent},
+  {path: 'users', component: IncluirUsuarioComponent},
   {path: 'me', component: UsuarioLogadoComponent},
+  {path: 'users/:id', component: GerenciarUsuarioComponent},
   {path: 'incluirCarro', component: CarroPopupComponent}
 ];
 

@@ -24,6 +24,7 @@ buscarme(){
     this.resposta = resp;
     this.usuario = this.resposta.usuario||{};
     this.carros = this.usuario.cars||[];
+    localStorage.setItem('usuario', JSON.stringify( this.usuario));
   console.log(this.resposta.usuario);
 })
 }

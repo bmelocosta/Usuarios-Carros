@@ -10,6 +10,8 @@ import { IncluirUsuarioComponent } from './components/incluir-usuario/incluir-us
 import { CarroPopupComponent } from './components/carro-popup/carro-popup.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
+import { ReactiveFormsModule } from '@angular/forms';
+import { GerenciarUsuarioComponent } from './components/gerenciar-usuario/gerenciar-usuario.component';
 
 @NgModule({
   declarations: [
@@ -18,14 +20,16 @@ import { MatDialogModule } from '@angular/material/dialog';
     UsuarioLogadoComponent,
     IncluirUsuarioComponent,
     CarroPopupComponent,
+    GerenciarUsuarioComponent
   ],
   imports: [
-    BrowserModule,
     AppRoutingModule,
-    FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatDialogModule
+    MatDialogModule,
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

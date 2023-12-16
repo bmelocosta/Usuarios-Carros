@@ -13,6 +13,7 @@ Historia_7 - Criacao de Todas as validacoes  e tratamento de excessoes, Liberaç
 Historia_8 - Criacao de todos os metodos nos controladores e Services, testados todos os endpoints.
 Historia_9 - Geracao de Pacote e importaco para maquina virtua da Amazon AWC no endereco 34.212.244.100:8080 com a api já funcional.
 Historia_10 - Elaboracao do front tela inicial, tela /ME e tela de cadastro do usuario concluidas.
+Historia_11 - conclusao das telas basicas e novo Deploy AWS.
 
 #SOLUÇÃO
 
@@ -40,6 +41,8 @@ A parti dai com uma ferramente como o postman, podemos disparar requisicoes para
 Estarei fornecendo tb o collection do JSON que usei para testar.
 
 no futuro, devo criar um front pra fazer essa intermediacao e não sera necessario mais a utilizacao do JSON. e enviarei novas informacoes de deploy.
+
+Concluidos front Operacional no AWS em http://servico-front-pitang.s3-website-us-west-2.amazonaws.com/
 
 ### Reference Documentation
 For further reference, please consider the following sections:

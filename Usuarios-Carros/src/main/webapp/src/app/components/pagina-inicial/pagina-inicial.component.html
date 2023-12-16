@@ -1,7 +1,7 @@
 <div class="container">
 	<div class="screen">
 		<div class="screen__content">
-			<form class="login">
+			<div class="login">
 				<div class="login__field">
 					<i class="login__icon fas fa-user"></i>
 					<input type="text" name="name" class="login__input" placeholder="Login" [(ngModel)]="user.login">
@@ -14,11 +14,11 @@
 					<span class="button__text">Fazer Login</span>
 					<i class="button__icon fas fa-chevron-right"></i>
 				</button>
-			</form>
+			</div>
 			<div class="social-login">
 				<h3>Novo usuario?</h3>
 				<div class="social-icons">
-					<button class="button login__submit" routerLink="/register">
+					<button class="button login__submit" routerLink="/users">
             <span class="button__text">Cadastre-se</span>
             <i class="button__icon fas fa-chevron-right"></i>
           </button>

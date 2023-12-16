@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,7 +25,7 @@ import com.usuarioscarros.crm.services.UsuarioService;
 
 import jakarta.validation.Valid;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "http://servico-front-pitang.s3-website-us-west-2.amazonaws.com")
 @RestController
 @RequestMapping
 public class AuthenticationController {
@@ -39,8 +40,10 @@ public class AuthenticationController {
 	private UsuarioService usuarioService;
 	
 	@PostMapping("/api/signin")
+	@CrossOrigin(origins = "http://servico-front-pitang.s3-website-us-west-2.amazonaws.com")
 	public ResponseEntity login(@RequestBody @Valid AuthenticationDTO data) {
 		try {
+			SecurityContextHolder.clearContext();
 			var loginPassword = new UsernamePasswordAuthenticationToken(data.login(), data.password());
 			var auth = this.authenticationManager.authenticate(loginPassword); 		
 			var token = tokenService.generateToken((Usuario)auth.getPrincipal());		
@@ -52,6 +55,7 @@ public class AuthenticationController {
 	}
 	
 	@GetMapping("/api/me")
+	@CrossOrigin(origins = "http://servico-front-pitang.s3-website-us-west-2.amazonaws.com")
 	public ResponseEntity getUsuarioLogado(@AuthenticationPrincipal Usuario usuarioLogado) {	
 		try {
 			
@@ -64,6 +68,7 @@ public class AuthenticationController {
 			usuarioLogadoDTO.setLastName(usuarioLogado.getLastName());
 			usuarioLogadoDTO.setLogin(usuarioLogado.getLogin());
 			usuarioLogadoDTO.setPhone(usuarioLogado.getPhone());			
+			usuarioLogadoDTO.setId(usuarioLogado.getId());			
 			RetornoConsultaUsuarioDTO retorno = new RetornoConsultaUsuarioDTO(usuarioLogadoDTO, usuarioLogado.getCreatedAt(), usuarioLogado.getLastLogin());			
 			return ResponseEntity.ok().body(retorno);				
 		} catch (Exception e) {

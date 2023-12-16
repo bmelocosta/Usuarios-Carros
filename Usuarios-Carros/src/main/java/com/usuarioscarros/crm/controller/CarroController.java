@@ -26,7 +26,7 @@ import com.usuarioscarros.crm.services.UsuarioService;
 
 import jakarta.validation.Valid;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "http://servico-front-pitang.s3-website-us-west-2.amazonaws.com")
 @RestController
 @RequestMapping("/api/cars")
 public class CarroController {
@@ -46,6 +46,7 @@ public class CarroController {
 	}
 	
 	@GetMapping("/{id}")
+	@CrossOrigin(origins = "http://servico-front-pitang.s3-website-us-west-2.amazonaws.com")
 	public ResponseEntity<?> getCarroPorId(@PathVariable("id") Long id , @AuthenticationPrincipal Usuario usuarioLogado){
 	
 		try {				
@@ -62,6 +63,7 @@ public class CarroController {
 	}
 	
 	@PostMapping
+	@CrossOrigin(origins = "http://servico-front-pitang.s3-website-us-west-2.amazonaws.com")
 	public ResponseEntity<?> adicionarCarro(@RequestBody @Valid Carro carro, @AuthenticationPrincipal Usuario usuarioLogado) {	
 		
 		try {		
@@ -75,6 +77,7 @@ public class CarroController {
 	}
 	
 	@PutMapping("/{id}")
+	@CrossOrigin(origins = "http://servico-front-pitang.s3-website-us-west-2.amazonaws.com")
 	public ResponseEntity<?> atualizarCarro(@PathVariable("id")Long id, @RequestBody @Valid Carro carro , @AuthenticationPrincipal Usuario usuarioLogado) {	
 		
 		try {					
@@ -92,6 +95,7 @@ public class CarroController {
 	}
 	
 	@DeleteMapping("/{id}")
+	@CrossOrigin(origins = "http://servico-front-pitang.s3-website-us-west-2.amazonaws.com")
 	public ResponseEntity<?> deletarCarroPorId(@PathVariable("id")Long id , @AuthenticationPrincipal Usuario usuarioLogado) {	
 		
 		try {					
@@ -99,7 +103,7 @@ public class CarroController {
 			Optional<Carro> carroADeletar = carroService.getCarro(usuarioLogado,id);
 			usuarioService.deleteCarro(usuarioLogado, carroADeletar.get());
 			carroRepository.deleteById(id);
-			return ResponseEntity.ok().body("Usuario excluido com sucesso!");			
+			return ResponseEntity.ok().body("Carro excluido com sucesso!");			
 		} catch (Exception e) {
 			ErroDTO erro = new ErroDTO(e.getMessage(), HttpStatus.BAD_REQUEST.value());
 			return ResponseEntity.ok().body(erro);

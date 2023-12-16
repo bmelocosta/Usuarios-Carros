@@ -10,8 +10,9 @@ import { RespostaConsultaUsuarioLogado } from '../RespostaConsultaUsuarioLogado'
 })
 export class LoginService {
 
-  signin:string = 'http://localhost:8080/api/signin'
-  me:string = 'http://localhost:8080/api/me'
+  sleep = (ms: number) => new Promise(r => setTimeout(r, ms));
+  signin:string = '//34.212.244.100:8080/api/signin'
+  me:string = '//34.212.244.100:8080/api/me'
 
   constructor(private http:HttpClient) { }
 
