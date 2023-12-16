@@ -12,6 +12,8 @@ Historia_6 - Criando e retornando o Token de autorizacao de acesso ok.
 Historia_7 - Criacao de Todas as validacoes  e tratamento de excessoes, Liberaçoes de todos os metodos no Security Configuration 			além da criação de todos os  metodos necessarios nos Devidos controllers e services do backend.
 Historia_8 - Criacao de todos os metodos nos controladores e Services, testados todos os endpoints.
 Historia_9 - Geracao de Pacote e importaco para maquina virtua da Amazon AWC no endereco 34.212.244.100:8080 com a api já funcional.
+Historia_10 - Elaboracao do front tela inicial, tela /ME e tela de cadastro do usuario concluidas.
+Historia_11 - conclusao das telas basicas e novo Deploy AWS.
 
 #SOLUÇÃO
 
@@ -40,4 +42,22 @@ Estarei fornecendo tb o collection do JSON que usei para testar.
 
 no futuro, devo criar um front pra fazer essa intermediacao e não sera necessario mais a utilizacao do JSON. e enviarei novas informacoes de deploy.
 
+Concluidos front Operacional no AWS em http://servico-front-pitang.s3-website-us-west-2.amazonaws.com/
 
+### Reference Documentation
+For further reference, please consider the following sections:
+
+* [Official Apache Maven documentation](https://maven.apache.org/guides/index.html)
+* [Spring Boot Maven Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/3.2.0/maven-plugin/reference/html/)
+* [Create an OCI image](https://docs.spring.io/spring-boot/docs/3.2.0/maven-plugin/reference/html/#build-image)
+* [Spring Boot DevTools](https://docs.spring.io/spring-boot/docs/3.2.0/reference/htmlsingle/index.html#using.devtools)
+* [Spring Data JPA](https://docs.spring.io/spring-boot/docs/3.2.0/reference/htmlsingle/index.html#data.sql.jpa-and-spring-data)
+* [Spring Web](https://docs.spring.io/spring-boot/docs/3.2.0/reference/htmlsingle/index.html#web)
+
+### Guides
+The following guides illustrate how to use some features concretely:
+
+* [Accessing Data with JPA](https://spring.io/guides/gs/accessing-data-jpa/)
+* [Building a RESTful Web Service](https://spring.io/guides/gs/rest-service/)
+* [Serving Web Content with Spring MVC](https://spring.io/guides/gs/serving-web-content/)
+* [Building REST services with Spring](https://spring.io/guides/tutorials/rest/)
